@@ -1,0 +1,121 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Event">
+    <meta name="author" content="">
+
+    <title>{% block title %}Admin - Event AnVy{% endblock %}</title>
+
+    <!-- Bootstrap Core CSS -->
+	<!--https://getbootstrap.com/docs/4.0/examples/dashboard/-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'src/css/event.css' %}">	
+	<style>	
+	</style>
+</head>
+
+<body>
+	<div id="wrapper">
+	<!-- Navigation -->
+		 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+			<!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+			<ul class="navbar-nav px-3">
+				<li class="nav-item text-nowrap">
+					<a class="nav-link" href="#">Sign out</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="container-fluid">
+			<div class="row">
+				
+				<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+					{% block sidebar %}
+					{%endblock%}
+					<div class="sidebar-sticky">
+					<!--Category-->
+						<h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+							<span>Category</span>
+							<a class="d-flex align-items-center text-muted" href="#">
+								<span data-feather="plus-circle"></span>
+							</a>
+							</h5>
+						<ul class="nav flex-column mb-2 ml-2">
+							<li class="nav-item">
+								<a class="nav-link" href="#">Category1</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/">Category2</a>
+							</li>				 
+						</ul>
+						<!--Users-->
+						<h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+							<span>Users</span>
+							<a class="d-flex align-items-center text-muted" href="#">
+								<span data-feather="plus-circle"></span>
+							</a>
+						</h5>
+						<ul class="nav flex-column mb-2 ml-2">
+							<li class="nav-item">
+								<a class="nav-link" href="#">Groups</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Users</a>
+							</li>				 
+						</ul>
+					</div>
+				</nav>
+				
+				<!--Content-->
+				
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+					<h2>Section title</h2>
+					{% block content %}
+					{%endblock%}
+				  <!--
+				  <div class="table-responsive">
+					<table class="table table-striped table-sm">
+					  <thead>
+						<tr>
+						  <th>#</th>
+						  <th>Header</th>
+						  <th>Header</th>
+						  <th>Header</th>
+						  <th>Header</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  <td>1,001</td>
+						  <td>Lorem</td>
+						  <td>ipsum</td>
+						  <td>dolor</td>
+						  <td>sit</td>
+						</tr>
+						<tr>
+						  <td>1,002</td>
+						  <td>amet</td>
+						  <td>consectetur</td>
+						  <td>adipiscing</td>
+						  <td>elit</td>
+						</tr>					
+					  </tbody>
+					</table>
+				  </div>
+				  -->
+				</main>
+				
+			</div>
+		</div>
+	</div>
+	
+	<!-- Bootstrap Core Js -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
