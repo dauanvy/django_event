@@ -1,0 +1,101 @@
+{% extends 'admin_temp.html' %}
+<!--==Title==-->
+{% block title %}
+	Admin - User List
+{% endblock %}
+<!--==Nvbar Brand==-->
+{% block sidebar %}
+{% endblock %}
+<!--==Content==-->
+{% block content %}
+	<style>
+		ul#id_group{
+			list-style-type:none;
+			padding:0px;
+			margin:0px;
+			}
+		ul#id_group li{
+			display:inline;
+			text-align:center;
+			text-decoration:none;
+			}
+		}
+	</style>
+	<h3>Users</h3>
+	<!--Form nhap lieu-->
+	<div id="app_form" class="mb-4">
+		{% if id == None %}
+		   <form action="{% url 'event:users' %}" method="post">
+		{% else %}
+		   <form action="{% url 'event:users_update' id=id %}" method="post">
+		{% endif %}
+			{% csrf_token %}
+			<input type="submit" value="Submit" />	
+			<hr />
+			<div class="row">
+				<div class="col-1 font-weight-bold">
+					{{ form.group.label}}			
+				</div>
+				<div class="col-11">
+					{{ form.group}}							
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-md-6">
+					<div class="row my-2">
+						<div class="col-4 font-weight-bold">{{ form.username.label}}</div>
+						<div class="col-8">{{ form.username}}</div>
+					</div>
+					<div class="row my-2">
+						<div class="col-4 font-weight-bold">{{ form.email.label}}</div>
+						<div class="col-8">{{ form.email}}</div>
+					</div>	
+				</div>
+				<div class="col-md-6">					
+					<div class="row my-2">
+						<div class="col-4 font-weight-bold">{{ form.password.label}}</div>
+						<div class="col-8">{{ form.password}}</div>
+					</div>	
+					<div class="row my-2">
+						<div class="col-4 font-weight-bold">{{ form.repassword.label}}</div>
+						<div class="col-8">{{ form.repassword}}</div>
+					</div>						
+				</div>
+			</div>
+		</form>
+	</div>
+	<!--Bang hien thi-->
+	{% if list_item|length %}
+	<table class="table table-bordered table-sm table-striped">
+		<thead style="background:#818182">
+			<tr class="font-weight-bold">
+				<th>User Name</th>				
+				<th>Email</th>
+				<th>Password</th>
+				<th>RePassword</th>
+				<th>Group</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in list_item %}
+			<tr >
+				<td>{{ item.username }}</td>				
+				<td>{{ item.email }}</td>
+				<td>{{ item.password }}</td>
+				<td>{{ item.repassword }}</td>
+				<td>
+					{% for group_item in item.group.all %}
+						<a href="#" class="badge badge-secondary">{{ group_item.name }}</a>
+					{% endfor %}
+				</td>
+				<td><a href="{% url 'event:users_update' id=item.id %}">Edit</a></td>	
+				<td><a href="{% url 'event:users_remove' id=item.id %}">Remove</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>	
+	{% endif %}
+{%endblock%}
