@@ -21,7 +21,7 @@
 	<div id="wrapper">
 	<!-- Navigation -->
 		 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Admin - Event</a>
 			<!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
 			<ul class="navbar-nav px-3">
 				<li class="nav-item text-nowrap">
@@ -36,27 +36,33 @@
 					{% block sidebar %}
 					{%endblock%}
 					<div class="sidebar-sticky">
-					<!--Category-->
+						<!--Home-->
 						<h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-							<span>Category</span>
-							<a class="d-flex align-items-center text-muted" href="#">
-								<span data-feather="plus-circle"></span>
+							<a class="d-flex align-items-center text-muted" href="/">
+								<span data-feather="plus-circle">Home</span>
 							</a>
-							</h5>
+						</h5>
+						<!--Category-->
+						<h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+							<span>Category</span>							
+						</h5>
 						<ul class="nav flex-column mb-2 ml-2">
 							<li class="nav-item">
-								<a class="nav-link" href="#">Category1</a>
-							</li>
+								<a class="nav-link" href="#">Category</a>
+							</li>										 
+						</ul>
+						<!--Event-->
+						<h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+							<span>Event</span>
+						</h5>
+						<ul class="nav flex-column mb-2 ml-2">
 							<li class="nav-item">
-								<a class="nav-link" href="/">Category2</a>
-							</li>				 
+								<a class="nav-link" href="#">Event</a>
+							</li>										
 						</ul>
 						<!--Users-->
 						<h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
 							<span>Users</span>
-							<a class="d-flex align-items-center text-muted" href="#">
-								<span data-feather="plus-circle"></span>
-							</a>
 						</h5>
 						<ul class="nav flex-column mb-2 ml-2">
 							<li class="nav-item">
@@ -73,38 +79,7 @@
 				
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					{% block content %}
-					{%endblock%}
-				  <!--
-				  <div class="table-responsive">
-					<table class="table table-striped table-sm">
-					  <thead>
-						<tr>
-						  <th>#</th>
-						  <th>Header</th>
-						  <th>Header</th>
-						  <th>Header</th>
-						  <th>Header</th>
-						</tr>
-					  </thead>
-					  <tbody>
-						<tr>
-						  <td>1,001</td>
-						  <td>Lorem</td>
-						  <td>ipsum</td>
-						  <td>dolor</td>
-						  <td>sit</td>
-						</tr>
-						<tr>
-						  <td>1,002</td>
-						  <td>amet</td>
-						  <td>consectetur</td>
-						  <td>adipiscing</td>
-						  <td>elit</td>
-						</tr>					
-					  </tbody>
-					</table>
-				  </div>
-				  -->
+					{%endblock%}				  
 				</main>
 				
 			</div>
