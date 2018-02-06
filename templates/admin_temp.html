@@ -12,7 +12,7 @@
     <!-- Bootstrap Core CSS -->
 	<!--https://getbootstrap.com/docs/4.0/examples/dashboard/-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="{% static 'src/css/event.css' %}">	
+	<link rel="stylesheet" href="{% static 'src/css/admin_event.css' %}">	
 	<style>	
 	</style>
 </head>
@@ -42,6 +42,15 @@
 								<span data-feather="plus-circle">Home</span>
 							</a>
 						</h5>
+						<!--Event-->
+						<h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+							<span>Event</span>
+						</h5>
+						<ul class="nav flex-column mb-2 ml-2">
+							<li class="nav-item">
+								<a class="nav-link" href="/event">Event</a>
+							</li>										
+						</ul>
 						<!--Category-->
 						<h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
 							<span>Category</span>							
@@ -50,16 +59,7 @@
 							<li class="nav-item">
 								<a class="nav-link" href="#">Category</a>
 							</li>										 
-						</ul>
-						<!--Event-->
-						<h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-							<span>Event</span>
-						</h5>
-						<ul class="nav flex-column mb-2 ml-2">
-							<li class="nav-item">
-								<a class="nav-link" href="#">Event</a>
-							</li>										
-						</ul>
+						</ul>						
 						<!--Users-->
 						<h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
 							<span>Users</span>

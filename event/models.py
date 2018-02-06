@@ -29,6 +29,9 @@ class EventUsers(models.Model):
 	class Meta:
 		db_table = "eventusers"
 		ordering = ['-id']
+	def __str__(self):
+		return self.username
+		
 class EventUsersForm(forms.ModelForm):
 	username = forms.CharField(label= 'User Name', max_length=100, strip=True, widget=forms.TextInput(attrs={'style':'width:100%'}))
 	password = forms.CharField(label= 'Password', max_length=100, strip=True, widget=forms.TextInput(attrs={'style':'width:100%'}))
@@ -43,3 +46,21 @@ class EventUsersForm(forms.ModelForm):
 			'group': forms.CheckboxSelectMultiple()
 			}
 
+#== Event ==#
+class Event(models.Model):
+	id = models.AutoField(primary_key=True)
+	user = models.ForeignKey(EventUsers, on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+	name = models.CharField(max_length=256, default='')
+	description = models.CharField(max_length=256, default='')
+	class Meta:
+		db_table = "event"
+		ordering = ['-id']
+	def __str__(self):
+		return self.name
+class EventForm(forms.ModelForm):
+	name = forms.CharField(label= 'Name', max_length=100, strip=True, widget=forms.TextInput(attrs={'style':'width:100%'}))
+	description = forms.CharField(label= 'description', max_length=100, strip=True, widget=forms.TextInput(attrs={'style':'width:100%'}))
+	user = forms.ModelChoiceField(queryset=EventUsers.objects.all(), empty_label="----------")
+	class Meta:
+		model = Event
+		fields = ['name', 'description', 'user']

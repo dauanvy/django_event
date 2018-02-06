@@ -1,1 +1,23 @@
-<h1>Homepage</h1>
+{% extends 'front_temp.html' %}
+{% block content %}	
+<div class="row">		
+	{% if list_item|length %}
+		{% for item in list_item%}
+			<div class="col-md-4">
+				<div class="event-ft-list">			
+					<a href="{{ item.get_absolute_url }}">												
+						<h3 class="text-success event-ft-h3">
+							<span>{{ item.name }}</span>
+						</h3>	
+						<div class="row">								
+							<div class="col-md-12">																			
+								<p>{{ item.description }}</p>
+							</div>
+						</div>						
+					</a>
+				</div>
+			</div>
+		{% endfor %}
+	{% endif %}
+</div>	
+{% endblock %}
