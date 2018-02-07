@@ -25,7 +25,7 @@ class EventUsers(models.Model):
 	password = models.CharField(max_length=256, default='')
 	repassword = models.CharField(max_length=256, default='')
 	email = models.CharField(max_length=256, default='')
-	group = models.ManyToManyField(EventGroups, related_name="group_ids")
+	group = models.ManyToManyField(EventGroups, related_name="group_ids",blank=True, default=False)
 	class Meta:
 		db_table = "eventusers"
 		ordering = ['-id']
@@ -37,7 +37,7 @@ class EventUsersForm(forms.ModelForm):
 	password = forms.CharField(label= 'Password', max_length=100, strip=True, widget=forms.TextInput(attrs={'style':'width:100%'}))
 	repassword = forms.CharField(label= 'RePassword', max_length=100, strip=True, widget=forms.TextInput(attrs={'style':'width:100%'}))
 	email = forms.CharField(label= 'Email', max_length=100, strip=True, widget=forms.TextInput(attrs={'style':'width:100%'}))
-	group = models.ManyToManyField(EventGroups)
+	group = models.ManyToManyField(EventGroups, blank=True)
 	class Meta:
 		model = EventUsers
 		fields = ['username', 'password', 'repassword', 'email', 'group']

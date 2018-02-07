@@ -1,6 +1,13 @@
 {% extends 'front_temp.html' %}
+{% block session %}
+	{% if user %}		
+		{% for item in user %}
+			Hello {{item.username}}
+		{% endfor %}
+	{% endif %}
+{%endblock%}
 {% block content %}	
-<div class="row">		
+<div class="row">
 	{% if list_item|length %}
 		{% for item in list_item%}
 			<div class="col-md-4">

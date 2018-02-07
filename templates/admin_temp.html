@@ -23,12 +23,23 @@
 		 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
 			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Admin - Event</a>
 			<!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
-			<ul class="navbar-nav px-3">
+			<ul class="navbar-nav px-3 ml-auto">
 				<li class="nav-item text-nowrap">
-					<a class="nav-link" href="#">Sign out</a>
+					<a class="nav-link px-3" href="#">
+						{% block session %}
+							{% if user|length %}		
+								{% for item in user %}
+									Hello {{item.username}}
+								{% endfor %}
+							{% endif %}
+						{%endblock%}
+					</a>
+				</li>
+				<li class="nav-item text-nowrap">
+					<a class="nav-link" href="{% url 'event:event_logout' %}">Sign out</a>
 				</li>
 			</ul>
-		</nav>
+		</nav>		
 		<div class="container-fluid">
 			<div class="row">
 				
@@ -71,10 +82,11 @@
 							<li class="nav-item">
 								<a class="nav-link" href="/users">Users</a>
 							</li>				 
-						</ul>
+						</ul>	
+						
 					</div>
 				</nav>
-				
+				 
 				<!--Content-->
 				
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">

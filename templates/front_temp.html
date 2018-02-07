@@ -20,9 +20,21 @@
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarTogglerEvent">
-						<ul class="navbar-nav ml-auto">							
+						<ul class="navbar-nav ml-auto">	
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									{% block session %}
+										{% if user|length %}		
+											{% for item in user %}
+												Hello {{item.username}}
+											{% endfor %}
+										{% endif %}
+									{%endblock%}
+								</a>
+							</li>
 							<li class="nav-item"><a class="nav-link" href="/web/login">Sign in</a></li>
 							<li class="nav-item"><a class="nav-link" href="/web/signup">Sign up</a></li>
+							<li class="nav-item"><a class="nav-link" href="{% url 'event:event_logout' %}">Sign out</a></li>
 						</ul>
 					</div>
 				</div>

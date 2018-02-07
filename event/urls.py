@@ -19,4 +19,6 @@ urlpatterns = [
 	
 	url(r'^web/login$',event_views.event_login,name='event_login'),
 	url(r'^web/signup$',event_views.event_signup,name='event_signup'),
+	url(r'^web/logout$',event_views.event_logout,name='event_logout'),
+	url(r'^web/success$',event_views.event_success,name='event_success'),
 ]
