@@ -26,52 +26,34 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="row my-2">
-					<div class="col-4 font-weight-bold">{{ form.name.label}}</div>
+					<div class="col-4">{{ form.name.label}}</div>
 					<div class="col-8">{{ form.name}}</div>
-				</div>
+				</div>					
+			</div>	
+			<div class="col-md-6">
 				<div class="row my-2">
-					<div class="col-4 font-weight-bold">{{ form.category.label}}</div>											
+					<div class="col-4">{{ form.description.label}}</div>
+					<div class="col-8">{{ form.description}}</div>
+				</div>					
+			</div>	
+			<div class="col-md-6">
+				<div class="row my-2">
+					<div class="col-4">{{ form.user.label}}</div>
 					<div class="col-8">
-						<select name="category" id="id_category" style="width:100%">
-							{% for name in form.category %}
-								{{ name }}
-							{% endfor %}
-						</select>
-					</div>
-				</div>
-				<div class="row my-2">
-					<div class="col-4 font-weight-bold">{{ form.organizer.label}}</div>
-					<div class="col-8">{{ form.organizer}}</div>
-				</div>
-				<div class="row my-2">
-					<div class="col-4 font-weight-bold">{{ form.location.label}}</div>
-					<div class="col-8">
-						<select name="location" id="id_location" style="width:100%">
-							{% for name in form.location %}
+						<select name="user" id="id_user" style="width:100%">
+							{% for name in form.user %}
 								{{ name }}
 							{% endfor %}
 						</select>
 					</div>
 				</div>					
-			</div>
+			</div>	
 			<div class="col-md-6">
 				<div class="row my-2">
-					<div class="col-4 font-weight-bold">{{ form.start_date.label}}</div>
-					<div class="col-8">{{ form.start_date}}</div>
-				</div>
-				<div class="row my-2">
-					<div class="col-4 font-weight-bold">{{ form.end_date.label}}</div>
-					<div class="col-8">{{ form.end_date}}</div>
-				</div>		
-				<div class="row my-2">
-					<div class="col-4 font-weight-bold">{{ form.phone.label}}</div>
-					<div class="col-8">{{ form.phone}}</div>
-				</div>	
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12 font-weight-bold">{{ form.description.label}}</div>
-			<div class="col-12">{{ form.description}}</div>
+					<div class="col-4">{{ form.title.label}}</div>
+					<div class="col-8">{{ form.title}}</div>
+				</div>					
+			</div>			
 		</div>
 		</form>
 	</div>
