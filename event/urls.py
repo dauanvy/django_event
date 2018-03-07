@@ -21,6 +21,14 @@ urlpatterns = [
 	url(r'^event_update/(?P<id>[\d]+)$',event_views.event_update,name='event_update'),
 	url(r'^event_remove/(?P<id>[\d]+)$',event_views.event_remove,name='event_remove'),
 	
+	url(r'^location$',event_views.location,name='location'),
+	url(r'^location_update/(?P<id>[\d]+)$',event_views.location_update,name='location_update'),
+	url(r'^location_remove/(?P<id>[\d]+)$',event_views.location_remove,name='location_remove'),
+	
+	url(r'^category$',event_views.category,name='category'),
+	url(r'^category_update/(?P<id>[\d]+)$',event_views.category_update,name='category_update'),
+	url(r'^category_remove/(?P<id>[\d]+)$',event_views.category_remove,name='category_remove'),
+	
 	url(r'^web/login$',event_views.event_login,name='event_login'),
 	url(r'^web/signup$',event_views.event_signup,name='event_signup'),
 	url(r'^web/logout$',event_views.event_logout,name='event_logout'),

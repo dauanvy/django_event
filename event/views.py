@@ -6,6 +6,8 @@ from django.http import HttpResponseRedirect, Http404
 from event.models import EventUsers, EventUsersForm
 from event.models import EventGroups, EventGroupsForm
 from event.models import Event, EventForm
+from event.models import Location, LocationForm
+from event.models import Category, CategoryForm
 
 def event_success(request):
 	return render(request,'front/success.html')
@@ -68,6 +70,98 @@ def event_signup(request):
 	else:
 		return HttpResponseRedirect('/web/success')
 ###########
+#category
+def category(request):
+	form = CategoryForm(request.POST)
+	data = {}
+	if request.method == 'POST':
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/category')
+	else :
+		form = CategoryForm()
+	list_item = Category.objects.all()
+	data['id'] = None
+	data['list_item'] = list_item
+	data['form'] = form
+	return render(request,'admin/category.html',data)
+def category_update(request, id):
+	data = {}
+	try:
+		selected_item = Category.objects.get(pk=id)
+		form = CategoryForm(instance=selected_item)
+	except Category.DoesNotExist:
+		raise Http404("This item not exist.")
+	if request.method == 'POST':
+		form = CategoryForm(request.POST or None, instance=selected_item)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/category')
+	list_item = Category.objects.all()
+	data['id'] = id
+	data['list_item'] = list_item
+	data['form'] = form
+	return render(request,'admin/category.html',data)
+
+def category_remove(request, id):
+	data = {}
+	try:
+		selected_item = Category.objects.get(pk=id)
+		selected_item.delete()
+		form = Category()
+	except Category.DoesNotExist:
+		raise Http404("This item not exist.")
+	list_item = Category.objects.all()
+	data['id'] = None
+	data['list_item'] = list_item
+	data['form'] = form
+	return HttpResponseRedirect('/category', data)
+#Location
+def location(request):
+	form = LocationForm(request.POST)
+	data = {}
+	if request.method == 'POST':
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/location')
+	else :
+		form = LocationForm()
+	list_item = Location.objects.all()
+	data['id'] = None
+	data['list_item'] = list_item
+	data['form'] = form
+	return render(request,'admin/location.html',data)
+def location_update(request, id):
+	data = {}
+	try:
+		selected_item = Location.objects.get(pk=id)
+		form = LocationForm(instance=selected_item)
+	except Location.DoesNotExist:
+		raise Http404("This item not exist.")
+	if request.method == 'POST':
+		form = LocationForm(request.POST or None, instance=selected_item)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/location')
+	list_item = Location.objects.all()
+	data['id'] = id
+	data['list_item'] = list_item
+	data['form'] = form
+	return render(request,'admin/location.html',data)
+
+def location_remove(request, id):
+	data = {}
+	try:
+		selected_item = Location.objects.get(pk=id)
+		selected_item.delete()
+		form = LocationForm()
+	except Location.DoesNotExist:
+		raise Http404("This item not exist.")
+	list_item = Location.objects.all()
+	data['id'] = None
+	data['list_item'] = list_item
+	data['form'] = form
+	return HttpResponseRedirect('/location', data)
 #== Event ==#
 def event(request):
 	s = request.session.get('eventusers_id', None)
@@ -110,7 +204,6 @@ def event_update(request, id):
 	user = EventUsers.objects.filter(id=s)
 	data['user']=user
 	return render(request,'admin/event.html',data)
-
 def event_remove(request, id):
 	s = request.session.get('eventusers_id', None)
 	if not s:
@@ -148,7 +241,6 @@ def users(request):
 	user = EventUsers.objects.filter(id=s)
 	data['user']=user
 	return render(request, 'admin/users.html', data)
-
 def users_update(request, id):
 	s = request.session.get('eventusers_id', None)
 	if not s:
@@ -171,7 +263,6 @@ def users_update(request, id):
 	user = EventUsers.objects.filter(id=s)
 	data['user']=user
 	return render(request,'admin/users.html',data)
-
 def users_remove(request, id):
 	s = request.session.get('eventusers_id', None)
 	if not s:
@@ -230,7 +321,6 @@ def groups_update(request, id):
 	user = EventUsers.objects.filter(id=s)
 	data['user']=user
 	return render(request,'admin/groups.html',data)
-
 def groups_remove(request, id):
 	s = request.session.get('eventusers_id', None)
 	if not s:

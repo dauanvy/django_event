@@ -1,0 +1,77 @@
+{% extends 'admin_temp.html' %}
+<!--==Title==-->
+{% block title %}
+	Admin - User List
+{% endblock %}
+<!--==Nvbar Brand==-->
+{% block sidebar %}
+{% endblock %}
+<!--==Content==-->
+{% block content %}
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item active" aria-current="page"><h6 class="mb-0">Location</h6></li>
+		</ol>
+	</nav>
+		
+	<!--Form nhap lieu-->
+	<div id="app_form" class="mb-4">
+		{% if id == None %}
+		   <form action="{% url 'event:location' %}" method="post">
+		{% else %}
+		   <form action="{% url 'event:location_update' id=id %}" method="post">
+		{% endif %}
+		{% csrf_token %}
+		<input type="submit" value="Submit" />				
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row my-2">
+					<div class="col-4">{{ form.name.label}}</div>
+					<div class="col-8">{{ form.name}}</div>
+				</div>
+				<div class="row my-2">
+					<div class="col-4">{{ form.street.label}}</div>
+					<div class="col-8">{{ form.street}}</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="row my-2">
+					<div class="col-4">{{ form.city.label}}</div>
+					<div class="col-8">{{ form.city}}</div>
+				</div>
+				<div class="row my-2">
+					<div class="col-4">{{ form.country.label}}</div>
+					<div class="col-8">{{ form.country}}</div>
+				</div>				
+			</div>
+		</div>
+		</form>
+	</div>
+	<!--Bang hien thi-->
+	{% if list_item|length %}		
+	<table class="table table-bordered table-sm table-striped">
+		<thead style="background:#818182">
+			<tr>
+				<th>Name</th>
+				<th>street</th>
+				<th>city</th>
+				<th>country</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in list_item %}
+			<tr >
+				<td>{{ item.name }}</td>
+				<td>{{ item.street }}</td>
+				<td>{{ item.city }}</td>
+				<td>{{ item.country }}</td>
+				<td><a href="{% url 'event:location_update' id=item.id %}">Edit</a></td>	
+				<td><a href="{% url 'event:location_remove' id=item.id %}">Remove</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>	
+	{% endif %}
+{%endblock%}
