@@ -17,7 +17,7 @@ urlpatterns = [
 	url(r'^groups_remove/(?P<id>[\d]+)$',event_views.groups_remove,name='groups_remove'),
 	
 	url(r'^event$', event_views.event, name='event'),
-	url(r'^event_list$', event_views.event_list, name='event_list'),
+	url(r'^event_list$', event_views.event, name='event_list'),
 	url(r'^event_update/(?P<id>[\d]+)$',event_views.event_update,name='event_update'),
 	url(r'^event_remove/(?P<id>[\d]+)$',event_views.event_remove,name='event_remove'),
 	

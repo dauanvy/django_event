@@ -102,6 +102,7 @@ def category_update(request, id):
 	data['list_item'] = list_item
 	data['form'] = form
 	return render(request,'admin/category.html',data)
+
 def category_remove(request, id):
 	data = {}
 	try:
@@ -147,6 +148,7 @@ def location_update(request, id):
 	data['list_item'] = list_item
 	data['form'] = form
 	return render(request,'admin/location.html',data)
+
 def location_remove(request, id):
 	data = {}
 	try:
@@ -168,7 +170,8 @@ def event_list(request):
 	data['list_item'] = list_item
 	user = EventUsers.objects.filter(id=s)
 	data['user']=user
-	return render(request,'admin/event_list.html', data)	
+	return render(request,'admin/event_list.html', data)
+	
 def event(request):	
 	s = request.session.get('eventusers_id', None)
 	if not s:
@@ -188,6 +191,7 @@ def event(request):
 	user = EventUsers.objects.filter(id=s)
 	data['user']=user
 	return render(request,'admin/event.html', data)
+
 def event_update(request, id):
 	s = request.session.get('eventusers_id', None)
 	if not s:
@@ -225,7 +229,7 @@ def event_remove(request, id):
 	data['id'] = None
 	data['list_item'] = list_item
 	data['form'] = form
-	return HttpResponseRedirect('/event_list', data)
+	return HttpResponseRedirect('/event', data)
 ###########
 #== User==#
 def users(request):

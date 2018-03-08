@@ -26,11 +26,11 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="row my-2">
-						<div class="col-4 font-weight-bold">{{ form.name.label}}</div>
+						<div class="col-4">{{ form.name.label}}</div>
 						<div class="col-8">{{ form.name}}</div>
 					</div>						
 					<div class="row my-2">
-						<div class="col-4 font-weight-bold">{{ form.user.label}}</div>
+						<div class="col-4">{{ form.user.label}}</div>
 						<div class="col-8">
 							<select name="user" id="id_user" style="width:100%">
 								{% for name in form.user %}
@@ -40,7 +40,7 @@
 						</div>
 					</div>						
 					<div class="row my-2">
-						<div class="col-4 font-weight-bold">{{ form.category.label}}</div>											
+						<div class="col-4">{{ form.category.label}}</div>											
 						<div class="col-8">
 							<select name="category" id="id_category" style="width:100%">
 								{% for name in form.category %}
@@ -50,17 +50,17 @@
 						</div>
 					</div>
 					<div class="row my-2">
-						<div class="col-4 font-weight-bold">{{ form.phone.label}}</div>
+						<div class="col-4">{{ form.phone.label}}</div>
 						<div class="col-8">{{ form.phone}}</div>
 					</div>						
 				</div>	
 				<div class="col-md-6">				
 					<div class="row my-2">
-						<div class="col-4 font-weight-bold">{{ form.organizer.label}}</div>
+						<div class="col-4">{{ form.organizer.label}}</div>
 						<div class="col-8">{{ form.organizer}}</div>
 					</div>
 					<div class="row my-2">
-						<div class="col-4 font-weight-bold">{{ form.location.label}}</div>
+						<div class="col-4">{{ form.location.label}}</div>
 						<div class="col-8">
 							<select name="location" id="id_location" style="width:100%">
 								{% for name in form.location %}
@@ -70,7 +70,7 @@
 						</div>
 					</div>
 					<div class="row my-2">
-						<div class="col-4 font-weight-bold">{{ form.start_date.label}}</div>
+						<div class="col-4">{{ form.start_date.label}}</div>
 						<div class="col-8">{{ form.start_date}}</div>
 					</div>						
 						
@@ -89,4 +89,41 @@
 			</div>
 		</form>
 	</div>
+	<!--Bang hien thi-->
+	{% if list_item|length %}		
+	<table class="table table-bordered table-sm table-striped">
+		<thead style="background:#818182">
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Title</th>
+				<th>User</th>
+				<th>Category</th>
+				<th>Organizer</th>
+				<th>Location</th>
+				<th>Start Date</th>
+				<th>Phone</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in list_item %}
+			<tr >
+				<td>{{ item.name }}</td>
+				<td>{{ item.description }}</td>
+				<td>{{ item.title }}</td>
+				<td>{{ item.user }}</td>
+				<td>{{ item.category }}</td>
+				<td>{{ item.organizer }}</td>
+				<td>{{ item.location }}</td>
+				<td>{{ item.start_date }}</td>
+				<td>{{ item.phone }}</td>
+				<td><a href="{% url 'event:event_update' id=item.id %}">Edit</a></td>	
+				<td><a href="{% url 'event:event_remove' id=item.id %}">Remove</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>	
+	{% endif %}
 {%endblock%}
