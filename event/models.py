@@ -85,8 +85,8 @@ class Event(models.Model):
 	id = models.AutoField(primary_key=True)
 	user = models.ForeignKey(EventUsers, on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
 	name = models.CharField(max_length=256, default='')
-	title = models.CharField(max_length=256, default='')
-	description = models.CharField(max_length=256, default='')
+	title = models.TextField(default='')
+	description = models.TextField(default='')
 	category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
 	location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True, blank=True)
 	start_date = models.DateTimeField(null=True, blank=True)	
@@ -116,8 +116,8 @@ class EventForm(forms.ModelForm):
 	start_date = forms.DateField(label='Start Date', required=False, input_formats = [ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'style':'width:100%'}))
 	location = forms.ModelChoiceField(queryset=Location.objects.all(), empty_label="----------")
 	category = forms.ModelChoiceField(queryset=Category.objects.all(), empty_label="----------")
-	title = forms.CharField(label= 'Title', max_length=100, strip=True, widget = forms.Textarea(attrs={'class':'form-control', 'rows':'5','id':'titletextarea',}))
-	description = forms.CharField(label= 'Description', required=False, max_length=100, strip=True, widget = forms.Textarea(attrs={'class':'form-control', 'rows':'20','id':'destextarea',}))
+	title = forms.CharField(label= 'Title', widget = forms.Textarea(attrs={'class':'form-control', 'rows':'5','id':'titletextarea',}))
+	description = forms.CharField(label= 'Description', widget = forms.Textarea(attrs={'class':'form-control', 'rows':'20','id':'destextarea',}))
 	class Meta:
 		model = Event
 		fields = ['name', 'description', 'user','title', 'phone', 'location','organizer','category', 'start_date']

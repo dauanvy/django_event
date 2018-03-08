@@ -1,9 +1,39 @@
 {% extends 'front_temp.html' %}
 {% block content %}	
-	<div class="row">
-		<div class="col-md-3">Detail Event</div>
-			<div>{{ object.name }}</div>			
+	<div class="row mt-3">
+        <div class="col-sm-8">
+            <div>
+				<h5><span>{{ object.title }}</span></h5>
+				<hr />
+				<p><span>Date :</span> {{ object.start_date }}</p>
+				<p><span>Locataion :</span> {{ object.location }}</p>
+				<hr />
+				<p>{{ object.description }}</p>	
+            </div>
+        </div>
+		<div class="col-sm-4">
+			<div class="card mb-3">
+				<div class="card-body">
+					<h5 class="card-title">DATE AND TIME</h5>
+					<p class="card-text">
+						<span>Fri, Apr 6, 2018, 8:00 AM – </span><br/>
+						<span>Sat, Apr 7, 2018, 8:00 PM </span><br/>
+						Indochina Time Vietnam Time
+					</p>					
+				</div>
+			</div>
+			
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">LOCATION</h5>
+					<p class="card-text">
+					<span>Hội Trường Vạn Hoa,</span><br/>
+					<span>165 Cầu Giấy, Hà Nội,</span><br/>
+					Hanoi, Hanoi 100000
+					</p>					
+				</div>
+			</div>
 		</div>
-	</div>	
+    </div>	
 {% endblock %}
 
