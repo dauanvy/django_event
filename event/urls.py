@@ -6,8 +6,7 @@ from django.views.generic import ListView, DetailView
 from event.models import Event
 urlpatterns = [
     url(r'^$',event_views.index,name='index'),
-	url(r'^detail/(?P<slug>[a-zA-Z0-9-]+)/?$', DetailView.as_view(model=Event),name='event'),
-	#url(r'^posts/(?P<id>\d+)/(?P<slug>[\w-]+)$', DetailView.as_view(model=Event), name='post'),
+	url(r'^detail/(?P<slug>[a-zA-Z0-9-]+)/?$', DetailView.as_view(model=Event),name='detail_event'),
 	
 	url(r'^users$', event_views.users, name='users'),
 	url(r'^users_update/(?P<id>[\d]+)$',event_views.users_update,name='users_update'),

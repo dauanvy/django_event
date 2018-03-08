@@ -17,44 +17,76 @@
 	<!--Form nhap lieu-->
 	<div id="app_form" class="mb-4">
 		{% if id == None %}
-		   <form action="{% url 'event:event' %}" method="post">
+			<form action="{% url 'event:event' %}" method="post">
 		{% else %}
-		   <form action="{% url 'event:event_update' id=id %}" method="post">
+			<form action="{% url 'event:event_update' id=id %}" method="post">
 		{% endif %}
-		{% csrf_token %}
-		<input type="submit" value="Submit" />				
-		<div class="row">
-			<div class="col-md-6">
-				<div class="row my-2">
-					<div class="col-4">{{ form.name.label}}</div>
-					<div class="col-8">{{ form.name}}</div>
-				</div>					
-			</div>	
-			<div class="col-md-6">
-				<div class="row my-2">
-					<div class="col-4">{{ form.description.label}}</div>
-					<div class="col-8">{{ form.description}}</div>
-				</div>					
-			</div>	
-			<div class="col-md-6">
-				<div class="row my-2">
-					<div class="col-4">{{ form.user.label}}</div>
-					<div class="col-8">
-						<select name="user" id="id_user" style="width:100%">
-							{% for name in form.user %}
-								{{ name }}
-							{% endfor %}
-						</select>
+		{% csrf_token %}	   
+			<input type="submit" value="Submit" />
+			<div class="row">
+				<div class="col-md-6">
+					<div class="row my-2">
+						<div class="col-4">{{ form.name.label}}</div>
+						<div class="col-8">{{ form.name}}</div>
+					</div>	
+					<div class="row my-2">
+						<div class="col-4">{{ form.description.label}}</div>
+						<div class="col-8">{{ form.description}}</div>
 					</div>
+					<div class="row my-2">
+						<div class="col-4">{{ form.user.label}}</div>
+						<div class="col-8">
+							<select name="user" id="id_user" style="width:100%">
+								{% for name in form.user %}
+									{{ name }}
+								{% endfor %}
+							</select>
+						</div>
+					</div>	
+					<div class="row my-2">
+						<div class="col-4">{{ form.title.label}}</div>
+						<div class="col-8">{{ form.title}}</div>
+					</div>	
+					<div class="row my-2">
+						<div class="col-4">{{ form.category.label}}</div>											
+						<div class="col-8">
+							<select name="category" id="id_category" style="width:100%">
+								{% for name in form.category %}
+									{{ name }}
+								{% endfor %}
+							</select>
+						</div>
+					</div>	
+				</div>	
+				<div class="col-md-6">				
+					<div class="row my-2">
+						<div class="col-4">{{ form.organizer.label}}</div>
+						<div class="col-8">{{ form.organizer}}</div>
+					</div>
+					<div class="row my-2">
+						<div class="col-4">{{ form.location.label}}</div>
+						<div class="col-8">
+							<select name="location" id="id_location" style="width:100%">
+								{% for name in form.location %}
+									{{ name }}
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+					<div class="row my-2">
+						<div class="col-4">{{ form.start_date.label}}</div>
+						<div class="col-8">{{ form.start_date}}</div>
+					</div>	
+					<div class="row my-2">
+						<div class="col-4">{{ form.end_date.label}}</div>
+						<div class="col-8">{{ form.end_date}}</div>
+					</div>	
+					<div class="row my-2">
+						<div class="col-4">{{ form.phone.label}}</div>
+						<div class="col-8">{{ form.phone}}</div>
+					</div>					
 				</div>					
-			</div>	
-			<div class="col-md-6">
-				<div class="row my-2">
-					<div class="col-4">{{ form.title.label}}</div>
-					<div class="col-8">{{ form.title}}</div>
-				</div>					
-			</div>			
-		</div>
+			</div>
 		</form>
 	</div>
 	<!--Bang hien thi-->
@@ -64,7 +96,14 @@
 			<tr>
 				<th>Name</th>
 				<th>Description</th>
-				<th></th>
+				<th>Title</th>
+				<th>User</th>
+				<th>Category</th>
+				<th>Organizer</th>
+				<th>Location</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Phone</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -74,7 +113,14 @@
 			<tr >
 				<td>{{ item.name }}</td>
 				<td>{{ item.description }}</td>
+				<td>{{ item.title }}</td>
 				<td>{{ item.user }}</td>
+				<td>{{ item.category }}</td>
+				<td>{{ item.organizer }}</td>
+				<td>{{ item.location }}</td>
+				<td>{{ item.start_date }}</td>
+				<td>{{ item.end_date }}</td>
+				<td>{{ item.phone }}</td>
 				<td><a href="{% url 'event:event_update' id=item.id %}">Edit</a></td>	
 				<td><a href="{% url 'event:event_remove' id=item.id %}">Remove</a></td>
 			</tr>

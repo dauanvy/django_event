@@ -112,12 +112,12 @@ class Event(models.Model):
 class EventForm(forms.ModelForm):
 	name = forms.CharField(label= 'Name', max_length=100, strip=True, widget=forms.TextInput(attrs={'style':'width:100%'}))
 	title = forms.CharField(label= 'Title', max_length=100, strip=True, widget=forms.TextInput(attrs={'style':'width:100%'}))
-	description = forms.CharField(label= 'description', max_length=100, strip=True, widget=forms.TextInput(attrs={'style':'width:100%'}))
+	description = forms.CharField(label= 'description', required=False, max_length=100, strip=True, widget=forms.TextInput(attrs={'style':'width:100%'}))
 	user = forms.ModelChoiceField(queryset=EventUsers.objects.all(), empty_label="----------")
 	organizer = forms.CharField(label='Organizer', required=False, widget=forms.TextInput(attrs={'style':'width:100%'}))	
 	phone = forms.CharField(label='Phone', required=False, widget=forms.TextInput(attrs={'style':'width:100%'}))
-	start_date = forms.DateField(label='Start Date', input_formats = [ '%Y-%m-%d' ], required=False, widget=forms.TextInput(attrs={'style':'width:100%'}))
-	end_date = forms.DateField(label='End Date', input_formats = [ '%Y-%m-%d' ], required=False, widget=forms.TextInput(attrs={'style':'width:100%'}))
+	start_date = forms.DateField(label='Start Date', required=False, input_formats = [ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'style':'width:100%'}))
+	end_date = forms.DateField(label='End Date', required=False, input_formats = [ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'style':'width:100%'}))
 	location = forms.ModelChoiceField(queryset=Location.objects.all(), empty_label="----------")
 	category = forms.ModelChoiceField(queryset=Category.objects.all(), empty_label="----------")
 	class Meta:

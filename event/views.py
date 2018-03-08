@@ -163,13 +163,13 @@ def location_remove(request, id):
 	data['form'] = form
 	return HttpResponseRedirect('/location', data)
 #== Event ==#
-def event(request):
+def event(request):	
 	s = request.session.get('eventusers_id', None)
 	if not s:
 		return HttpResponseRedirect('/web/login')
+	form = EventForm(request.POST)
 	data = {}
 	if request.method == 'POST':
-		form = EventForm(request.POST)
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect('/event')
@@ -182,6 +182,7 @@ def event(request):
 	user = EventUsers.objects.filter(id=s)
 	data['user']=user
 	return render(request,'admin/event.html', data)
+
 def event_update(request, id):
 	s = request.session.get('eventusers_id', None)
 	if not s:
