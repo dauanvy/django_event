@@ -11,18 +11,18 @@
 	{% if list_item|length %}
 		{% for item in list_item%}
 			<div class="col-md-4">
-				<div class="event-ft-list">			
-					<a href="{{ item.get_absolute_url }}">												
-						<h3 class="text-success event-ft-h3">
-							<span>{{ item.name }}</span>
-						</h3>	
-						<div class="row">								
-							<div class="col-md-12">																			
-								<p>{{ item.description }}</p>
+				<div class="event-ft-list">
+					<a href="{{ item.get_absolute_url }}">	
+						<div class="card">
+							<div class="card-header"><time>{{ item.start_date }}</time></div>
+							<div class="card-body">
+								<h5 class="card-title">{{ item.title }}</h5>
+								<p class="card-text">{{ item.location }}</p>
 							</div>
-						</div>						
+							<div class="card-footer text-muted">{{ item.category }}</div>
+						</div>
 					</a>
-				</div>
+				</div>				
 			</div>
 		{% endfor %}
 	{% endif %}
