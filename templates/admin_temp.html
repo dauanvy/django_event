@@ -12,6 +12,16 @@
     <!-- Bootstrap Core CSS -->
 	<!--https://getbootstrap.com/docs/4.0/examples/dashboard/-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src='https://cdn.tinymce.com/4/tinymce.min.js'></script>
+	<script src='https://www.tinymce.com/scripts/website.min.js'></script>
+	<script>
+		tinymce.init({
+			selector: '#destextarea',
+			plugins: "code",
+			// toolbar: "code",
+			// menubar: "tools"
+		});
+	</script>
 	<link rel="stylesheet" href="{% static 'src/css/admin_event.css' %}">	
 	<style>	
 	</style>
