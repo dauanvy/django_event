@@ -47,22 +47,8 @@
 			</div>
 			<div class="container-fluid pt-3 pb-2">
 				<div class="container">
-					<div class="row h-100" >
-						<form class="form-inline w-100">
-							<div class="col-4 px-0 pl-lg-3 pr-lg-1 pl-md-3 pr-md-1" >							
-								<input class="form-control w-100" type="search" placeholder="Filter Category " aria-label="Search">															
-							</div>
-							<div class="col-4 px-1" >
-								<input class="form-control w-100" type="search" placeholder="Filter Location" aria-label="Search">	
-							</div>
-							<div class="col-4 pl-3" >
-								<div class="row" >
-									<div class="col-10 w-100 px-1"><input class="form-control w-100" type="search" placeholder="Search" aria-label="Search"></div>
-									<div class="col-2 w-100 px-1"><button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button></div>
-								</div>
-							</div>
-						</form>
-					</div>
+					{% block search %}
+				    {% endblock %}					
 				</div>
 			</div>
 			<div class="container">

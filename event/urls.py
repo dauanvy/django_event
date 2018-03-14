@@ -20,7 +20,8 @@ urlpatterns = [
 	url(r'^event_list$', event_views.event_list, name='event_list'),
 	url(r'^event_update/(?P<id>[\d]+)$',event_views.event_update,name='event_update'),
 	url(r'^event_remove/(?P<id>[\d]+)$',event_views.event_remove,name='event_remove'),
-	
+	#url(r'^search$', event_views.search, name='search'),
+	 
 	url(r'^location$',event_views.location,name='location'),
 	url(r'^location_update/(?P<id>[\d]+)$',event_views.location_update,name='location_update'),
 	url(r'^location_remove/(?P<id>[\d]+)$',event_views.location_remove,name='location_remove'),

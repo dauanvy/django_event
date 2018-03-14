@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.hashers import make_password, check_password
+
+from event.filters import EventFilter
 # Create your views here.
 from django.http import HttpResponseRedirect, Http404
 from event.models import EventUsers, EventUsersForm
@@ -18,6 +20,9 @@ def index(request):
 	data['list_item'] = list_item
 	user = EventUsers.objects.filter(id=s)
 	data['user']=user
+	#filter
+	event_filter = EventFilter(request.GET, queryset=list_item)
+	data['filter']=event_filter
 	return render(request,'front/index.html', data)
 	
 ###########
@@ -343,3 +348,9 @@ def groups_remove(request, id):
 	data['list_item'] = list_item
 	data['form'] = form
 	return HttpResponseRedirect('/groups', data)
+
+#== Search event ==
+# def search(request):
+    # event_list = Event.objects.all()
+    # event_filter = EventFilter(request.GET, queryset=event_list)
+    # return render(request, 'search/event_list.html', {'filter': event_filter})

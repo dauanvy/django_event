@@ -1,4 +1,6 @@
 {% extends 'front_temp.html' %}
+{% load widget_tweaks %}
+
 {% block session %}
 	{% if user %}		
 		{% for item in user %}
@@ -6,10 +8,53 @@
 		{% endfor %}
 	{% endif %}
 {%endblock%}
+
+{% block search %}
+	<div class="row h-100" >
+		<form class="form-inline w-100">
+			<div class="col-4 px-0 pl-lg-3 pr-lg-1 pl-md-3 pr-md-1" >																					-->
+				<div id="filter_location">
+					<div class="btn-group w-100">
+						<button class="btn dropdown-toggle w-100" type="button" data-toggle="dropdown">Filter Location</button>
+						<ul class="dropdown-menu w-100" role="menu">
+							{% for choice in filter.form.location %}
+								<label class="checkbox-inline ml-2" style="justify-content: left">
+									{{ choice.tag }} {{ choice.choice_label }}
+								</label>
+							{% endfor %}								
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-4 px-1" >
+				<div id="filter_category">
+					<div class="btn-group w-100">
+						<button class="btn dropdown-toggle w-100" type="button" data-toggle="dropdown">Filter Category</button>
+						<ul class="dropdown-menu w-100" role="menu">
+							{% for choice in filter.form.category %}
+								<label class="checkbox-inline ml-2" style="justify-content: left">
+									{{ choice.tag }} {{ choice.choice_label }}
+								</label>
+							{% endfor %}								
+						</ul>
+					</div>
+				</div>				
+			</div>
+			<div class="col-4 pl-3" >
+				<div class="row" >
+					<div class="col-10 w-100 px-1">{% render_field filter.form.title class="form-control w-100" %}</div>
+					<div class="col-2 w-100 px-1"><button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button></div>
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock %}
+
 {% block content %}	
-<div class="row">
-	{% if list_item|length %}
-		{% for item in list_item%}
+
+{% if filter.qs %}
+	<div class="row">
+		{% for item in filter.qs %}
 			<div class="col-md-4">
 				<div class="event-ft-list">
 					<a href="{{ item.get_absolute_url }}">	
@@ -24,7 +69,15 @@
 					</a>
 				</div>				
 			</div>
+		{% empty %}
+				<p>No data</p>
 		{% endfor %}
-	{% endif %}
-</div>	
+	</div>
+{% endif %}
+	
+<script>
+	$('.dropdown-menu').on('click', 'input[type="checkbox"]', function(e) {
+		e.stopPropagation();
+	});
+</script>
 {% endblock %}
