@@ -32,12 +32,13 @@
 			</div>
 		</form>
 	</div>
-	<!--Bang hien thi-->
+	<!--Bang hien thi-->	
 	{% if list_item|length %}		
 	<table class="table table-bordered table-sm table-striped">
 		<thead style="background:#818182">
 			<tr>
 				<th>Name</th>
+				<th>Users</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -46,6 +47,15 @@
 			{% for item in list_item %}
 			<tr >
 				<td>{{ item.name }}</td>
+				<td>
+					{% for group_user in list_group_user %}						
+						{% for group_user_item in group_user.group.all %}							
+							{%if group_user_item.id == item.id%}
+								<a href="#" class="badge badge-secondary">{{ group_user }}</a>
+							{%endif%}								
+						{% endfor %}						
+					{% endfor %}
+				</td>
 				<td><a href="{% url 'event:groups_update' id=item.id %}">Edit</a></td>	
 				<td><a href="{% url 'event:groups_remove' id=item.id %}">Remove</a></td>
 			</tr>

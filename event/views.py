@@ -309,6 +309,9 @@ def groups (request):
 	data['form'] = form
 	user = EventUsers.objects.filter(id=s)
 	data['user']=user
+	#hien thi user trong group
+	list_group_user = EventUsers.objects.all()
+	data['list_group_user']=list_group_user
 	return render(request, 'admin/groups.html', data)
 def groups_update(request, id):
 	s = request.session.get('eventusers_id', None)
@@ -330,7 +333,11 @@ def groups_update(request, id):
 	data['list_item'] = list_item
 	data['form'] = form
 	user = EventUsers.objects.filter(id=s)
-	data['user']=user
+	data['user']=user	
+	
+	#hien thi user trong group
+	list_group_user = EventUsers.objects.all()
+	data['list_group_user']=list_group_user
 	return render(request,'admin/groups.html',data)
 def groups_remove(request, id):
 	s = request.session.get('eventusers_id', None)
