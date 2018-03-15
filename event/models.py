@@ -1,3 +1,4 @@
+import pytz
 from django.db import models
 
 # Create your models here.
@@ -92,6 +93,10 @@ class Event(models.Model):
 	start_date = models.DateTimeField(null=True, blank=True)	
 	organizer = models.CharField(max_length=256, default='')
 	phone = models.CharField(max_length=256, default='')
+	website = models.CharField(max_length=256,default='',blank=True, null=True)
+	email = models.CharField(max_length=256,default='',blank=True, null=True)
+	social = models.CharField(max_length=256,default='',blank=True, null=True)
+	timezone = models.CharField(max_length=256,default='', blank=True, null=True)
 	slug = models.SlugField(default='')
 		
 	def __unicode__(self):
@@ -113,6 +118,10 @@ class EventForm(forms.ModelForm):
 	user = forms.ModelChoiceField(queryset=EventUsers.objects.all(), empty_label="----------")
 	organizer = forms.CharField(label='Organizer', required=False, widget=forms.TextInput(attrs={'style':'width:100%'}))	
 	phone = forms.CharField(label='Phone', required=False, widget=forms.TextInput(attrs={'style':'width:100%'}))
+	website = forms.CharField(label='Website', required=False, widget=forms.TextInput(attrs={'style':'width:100%'}))
+	email = forms.CharField(label='Email', required=False, widget=forms.TextInput(attrs={'style':'width:100%'}))
+	social = forms.CharField(label='Social', required=False, widget=forms.TextInput(attrs={'style':'width:100%'}))	
+	timezone = forms.ChoiceField(choices=[(x, x) for x in pytz.common_timezones])
 	start_date = forms.DateField(label='Start Date', required=False, input_formats = [ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'style':'width:100%'}))
 	location = forms.ModelChoiceField(queryset=Location.objects.all(), empty_label="----------")
 	category = forms.ModelChoiceField(queryset=Category.objects.all(), empty_label="----------")
@@ -120,7 +129,7 @@ class EventForm(forms.ModelForm):
 	description = forms.CharField(label= 'Description',required=False, widget = forms.Textarea(attrs={'class':'form-control', 'rows':'20','id':'destextarea',}))
 	class Meta:
 		model = Event
-		fields = ['name', 'description', 'user','title', 'phone', 'location','organizer','category', 'start_date']
+		fields = ['name', 'description', 'user','title', 'phone', 'location','organizer','category', 'start_date','website','email','social','timezone']
 		widgets = {
 			'body': forms.Textarea()
 			}

@@ -1,4 +1,5 @@
 {% extends 'admin_temp.html' %}
+{% load widget_tweaks %}
 <!--==Title==-->
 {% block title %}
 	Admin - User List
@@ -49,12 +50,6 @@
 						</div>
 					</div>
 					<div class="row my-2">
-						<div class="col-4 font-weight-bold">{{ form.phone.label}}</div>
-						<div class="col-8">{{ form.phone}}</div>
-					</div>						
-				</div>	
-				<div class="col-md-6">				
-					<div class="row my-2">
 						<div class="col-4 font-weight-bold">{{ form.organizer.label}}</div>
 						<div class="col-8">{{ form.organizer}}</div>
 					</div>
@@ -71,18 +66,38 @@
 					<div class="row my-2">
 						<div class="col-4 font-weight-bold">{{ form.start_date.label}}</div>
 						<div class="col-8">{{ form.start_date}}</div>
+					</div>				
+				</div>	
+				<div class="col-md-6">				
+					<div class="row my-2">
+						<div class="col-4 font-weight-bold">{{ form.phone.label}}</div>
+						<div class="col-8">{{ form.phone}}</div>
+					</div>	
+					<div class="row my-2">
+						<div class="col-4 font-weight-bold">{{ form.timezone.label}}</div>
+						<div class="col-8">{% render_field form.timezone class="w-100" %}</div>
+					</div>	
+						<div class="row my-2">
+						<div class="col-4 font-weight-bold">{{ form.website.label}}</div>
+						<div class="col-8">{{ form.website}}</div>
+					</div>	
+					<div class="row my-2">
+						<div class="col-4 font-weight-bold">{{ form.email.label}}</div>
+						<div class="col-8">{{ form.email}}</div>
+					</div>	
+					<div class="row my-2">
+						<div class="col-4 font-weight-bold">{{ form.social.label}}</div>
+						<div class="col-8">{{ form.social}}</div>
 					</div>						
-						
-									
 				</div>					
 			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="row my-2">
-						<div class="col-12">{{ form.title.label}} <br /> {{ form.title}}</div>
+						<div class="col-12"><span class="font-weight-bold">{{ form.title.label}}</span><br/>{{ form.title}}</div>
 					</div>	
 					<div class="row my-2">						
-						<div class="col-12">{{ form.description.label}} <br />{{ form.description}}</div>
+						<div class="col-12"><span class="font-weight-bold">{{ form.description.label}}</span><br/>{{ form.description}}</div>
 					</div>	
 				</div>
 			</div>

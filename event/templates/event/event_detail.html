@@ -14,11 +14,22 @@
 		<div class="col-sm-4">
 			<div class="card mb-3">
 				<div class="card-body">
+					<h5 class="card-title">CONTACT US</h5>
+					<p class="card-text">
+						<span>{{object.social}}</span><br/>
+						<span>{{object.website}}</span><br/>
+						<span>{{object.email}}</span><br/>
+						<span>{{object.phone}}</span>
+					</p>	
+				</div>
+			</div>
+			
+			<div class="card mb-3">
+				<div class="card-body">
 					<h5 class="card-title">DATE AND TIME</h5>
 					<p class="card-text">
-						<span>Fri, Apr 6, 2018, 8:00 AM – </span><br/>
-						<span>Sat, Apr 7, 2018, 8:00 PM </span><br/>
-						Indochina Time Vietnam Time
+						<span>{{object.start_date}}</span><br/>
+						<span>{{object.timezone}}</span>
 					</p>					
 				</div>
 			</div>
@@ -27,12 +38,13 @@
 				<div class="card-body">
 					<h5 class="card-title">LOCATION</h5>
 					<p class="card-text">
-					<span>Hội Trường Vạn Hoa,</span><br/>
-					<span>165 Cầu Giấy, Hà Nội,</span><br/>
-					Hanoi, Hanoi 100000
+						<span>{{ object.location }}</span><br/>		
+						<span>{{ object.location.street }}</span><br/>	
+						<span>{{ object.location.city }}</span><br/>	
+						<span>{{ object.location.country }}</span>						
 					</p>					
 				</div>
-			</div>
+			</div>	
 		</div>
     </div>	
 {% endblock %}
