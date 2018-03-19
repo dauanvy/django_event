@@ -8,7 +8,9 @@
 				<p><span>Date :</span> {{ object.start_date }}</p>
 				<p><span>Locataion :</span> {{ object.location }}</p>
 				<hr />
-				<p>{{ object.description }}</p>	
+				<p>
+					{% autoescape off %} {{ object.description }} {% endautoescape %}
+				</p>	
             </div>
         </div>
 		<div class="col-sm-4">
